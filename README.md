@@ -92,6 +92,12 @@ Stop Time	2024-09-17T22:46:20
 | SecurityIncident         | 0
 | AzureNetworkAnalytics_CL | 0
 
+## Key Observations:
+- Windows Security Events: There was a significant reduction (81.92%) in security events recorded on Windows VMs after hardening. This indicates the success of applied controls like firewalls and NSG rules in mitigating unauthorized attempts.
+- Linux Syslog Events: The reduction of Syslog entries by 99.68% demonstrates that SSH brute force attacks on Linux VMs were nearly eliminated after implementing security measures, especially limiting open ports and securing SSH access.
+- Security Alerts and Incidents: Both SecurityAlerts from Microsoft Defender for Cloud and SecurityIncidents from Sentinel dropped to zero, confirming the effectiveness of the applied hardening techniques, which helped block all potential attacks and eliminated the need for triggered alerts.
+- NSG Inbound Malicious Flows: The elimination of malicious flows allowed through the NSG (100% reduction) reflects the success of fine-tuning inbound traffic rules, preventing unwanted traffic from reaching the honeynet.
+  
 ## Conclusion
 
 This project demonstrates the practical application of Azure services in setting up a SOC and honeynet for cybersecurity monitoring and threat analysis. The hardening process significantly improved the security posture, making the environment more resilient to common attack vectors. The comparison between pre- and post-hardening metrics highlights the effectiveness of the implemented security controls. The maps and logs provide critical insights into global attack patterns, offering valuable data for incident response teams to proactively mitigate threats.
