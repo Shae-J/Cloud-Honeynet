@@ -31,22 +31,22 @@ The architecture of the mini honeynet in Azure consists of the following compone
 ## Architecture Changes
 
 ### Before Hardening: 
-The architecture was initially unsecured, with all resources exposed to the internet. The Virtual Machines had both their Network Security Groups and built-in firewalls wide open, and all other resources were deployed with public endpoints visible to the internet, without any use of Private Endpoints. This configuration made the environment highly vulnerable to external attacks.
+The initial architecture was exposed and unsecured, with all resources publicly accessible over the internet. The Virtual Machines had their Network Security Groups (NSGs) and built-in firewalls configured with overly permissive rules, while other resources were deployed with public endpoints, completely bypassing the use of Private Endpoints. This configuration rendered the environment highly susceptible to external threats and attack vectors.
 #### Vulnerabilities:
-- Open ports allowed unrestricted access to VMs.
-- Publicly accessible resources (e.g., Key Vault, Storage) left the environment exposed to external threats.
+- Open ports facilitated unrestricted access to Virtual Machines, enabling potential exploitation.
+- Publicly accessible resources (e.g., Azure Key Vault, Azure Blob Storage) left the environment vulnerable to external reconnaissance and exploitation.
 #### Security Risks:
-- The unprotected resources allowed attackers to easily scan and exploit the environment, resulting in a high volume of failed authentication attempts and malicious traffic.
+- The unprotected resources allowed attackers to conduct extensive scanning and exploit vulnerabilities, resulting in numerous failed authentication attempts and a surge in malicious traffic patterns.
 ### After Hardening:
 A hardened architecture was implemented to mitigate the identified risks. Key changes included:
 #### Architecture Security Enhancements:
-- Implementation of NSGs with restrictive rules to limit inbound traffic.
-- Subnet segregation for better isolation of resources.
-- Hardened VMs with security controls such as MFA and access control lists.
-- Key Vault and Blob Storage protected by firewalls and private endpoints.
+- Deployment of Network Security Groups (NSGs) with granular, restrictive rules to limit inbound traffic to only authorized sources.
+- Subnet segmentation to improve resource isolation and minimize lateral movement potential.
+- Hardening of Virtual Machines by incorporating security controls such as Multi-Factor Authentication (MFA), encryption at rest, and comprehensive access control lists (ACLs).
+- Protection of Key Vault and Blob Storage through the use of Azure Firewall and Private Endpoints to restrict access to internal networks.
 #### Security Improvements:
-- The introduction of these security controls drastically reduced the attack surface.
-- Only authorized traffic could access the resources, and strict monitoring was put in place to detect anomalous behavior.
+- The implementation of these security controls drastically reduced the attack surface. Only whitelisted traffic was permitted to access the resources, and continuous monitoring with advanced threat detection mechanisms was established to identify anomalous behavior and potential intrusions.
+
 
 
 ## Attack Maps Before Hardening / Security Controls
